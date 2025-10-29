@@ -3,7 +3,10 @@ function App() {
  
   return (
     <>
-     <h1 className="container">Bienvenidos</h1>
+    <main className="container py-5">
+     <h1 className="text-center text-light">Bienvenidos</h1>
+     {/*Aqui agrego el resto de los componentes*/}
+     </main>
     </>
   )
 }
