@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import ListaTareas from "./ListaTareas";
 
 const FormularioTarea = () => {
   return (
@@ -15,6 +16,7 @@ const FormularioTarea = () => {
           <Form.Text className="text-danger">Aqui muestro un error</Form.Text>
         </Form.Group>
       </Form>
+      <ListaTareas/>
     </section>
   );
 };
