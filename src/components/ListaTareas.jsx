@@ -1,9 +1,10 @@
 import ListGroup from 'react-bootstrap/ListGroup';
+import ItemTarea from './ItemTarea';
 
 const ListaTareas = () => {
     return (
      <ListGroup>
-      <ListGroup.Item>Cras justo odio</ListGroup.Item>
+    <ItemTarea/>
     </ListGroup>
     );
 };
