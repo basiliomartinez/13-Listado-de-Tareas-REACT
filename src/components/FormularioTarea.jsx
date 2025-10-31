@@ -26,7 +26,7 @@ setTarea('')
           <Form.Text className="text-danger">Aqui muestro un error</Form.Text>
         </Form.Group>
       </Form>
-      <ListaTareas/>
+      <ListaTareas arrayTareas={arrayTareas}/>
     </section>
   );
 };
