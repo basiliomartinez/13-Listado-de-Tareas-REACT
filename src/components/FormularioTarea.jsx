@@ -2,11 +2,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ListaTareas from "./ListaTareas";
 import { useState } from "react";
-import ItemTarea from "./ItemTarea";
+
 
 const FormularioTarea = () => {
     const [arrayTareas, setArrayTareas]= useState([])
     const[tarea, setTarea]= useState('')
+
 const handlesubmit= (e)=>{e.preventDefault()
     //Verificar que la tarea no este repetida
     const tareaBuscada= arrayTareas.find((itemTarea)=>itemTarea.toLowerCase()===tarea.toLowerCase().trim())
@@ -18,8 +19,16 @@ const handlesubmit= (e)=>{e.preventDefault()
 setArrayTareas([...arrayTareas, tarea.trim()])
 //limpiar el state tarea
 setTarea('')
+}
+
+const borrarTarea= (nombreTarea)=>{
+    const arrayFiltrado= arrayTareas.filter((itemTarea=>itemTarea !== nombreTarea))
+//actualizar estado
+setArrayTareas(arrayFiltrado)
 
 }
+
+
   return (
     <section>
       <Form onSubmit={handlesubmit}>
@@ -30,10 +39,10 @@ setTarea('')
               Enviar
             </Button>
           </div>
-          <Form.Text className="text-danger">Aqui muestro un error</Form.Text>
+    
         </Form.Group>
       </Form>
-      <ListaTareas arrayTareas={arrayTareas}/>
+      <ListaTareas arrayTareas={arrayTareas} borrarTarea={borrarTarea}/>
     </section>
   );
 };
