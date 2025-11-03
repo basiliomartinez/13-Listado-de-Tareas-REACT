@@ -1,17 +1,22 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import ListaTareas from "./ListaTareas";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const FormularioTarea = () => {
-    const [arrayTareas, setArrayTareas]= useState([])
+    const tareasLocalStorage= JSON.parse(localStorage.getItem('ListaTareas')) || []
+    const [arrayTareas, setArrayTareas]= useState(tareasLocalStorage)
     const[tarea, setTarea]= useState('')
+
+    useEffect(()=>{  
+        console.log('desde UseEfect')
+        localStorage.setItem('ListaTareas', JSON.stringify(arrayTareas))
+    },[arrayTareas]) 
 
 const handlesubmit= (e)=>{e.preventDefault()
     //Verificar que la tarea no este repetida
     const tareaBuscada= arrayTareas.find((itemTarea)=>itemTarea.toLowerCase()===tarea.toLowerCase().trim())
-    console.log(tareaBuscada)
     if(tareaBuscada){
         return alert('Ya existe una tarea con ese nombre')
     }
@@ -39,7 +44,7 @@ setArrayTareas(arrayFiltrado)
               Enviar
             </Button>
           </div>
-    
+      
         </Form.Group>
       </Form>
       <ListaTareas arrayTareas={arrayTareas} borrarTarea={borrarTarea}/>
